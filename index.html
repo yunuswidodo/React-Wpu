@@ -13,15 +13,53 @@
     <div id="root"></div>
     <script type="text/babel">
     
-      function Header(Props) {
-        return <h1>Hello, world! {Props.name}</h1>;
+      function Header({name}) {
+        return <h1>Hello, world! {name ? name : 'WPU'}</h1>;
       }
 
       function HomePage(){
+            const students = ["ahmad", "yunus", "widodo"];
+            const [likes, setLike] = React.useState(0);
+
+            function handleCLick(){
+            setLike(likes + 1);
+            }
+
+            // chalange 
+            let [val, setVal] = React.useState(0);
+
+            function addClick(){
+              setVal(val + 1);
+            }
+
+
+            function minClick(){
+              setVal(val - 1);
+            }
+
+
+            function resetValue(){              
+              setVal(0)              
+            }
             return (
             <>
-                <Header name="WPU"/>
+                <ul>
+                    {
+                      students.map((student)=>(
+                        <li key={student}>{student}</li>
+                      ))
+                    }                   
+                </ul>
                 <Header name="Yunus"/>
+                <button onClick={handleCLick}> Like ({likes})</button>
+
+                <div>
+                    <button onClick={addClick}>ADD</button>
+                    <button>Val({val})</button>
+                    <button onClick={minClick}>Min</button>
+                    <button onClick={resetValue}>Reset</button>
+                    
+                </div>
             </>)
       }
 
