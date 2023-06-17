@@ -29,12 +29,21 @@
             let [val, setVal] = React.useState(0);
 
             function addClick(){
-              setVal(val + 1);
+              if (val >= 10){
+                setVal("nilai Max");
+              }else{
+                setVal(val + 1);
+              }
+              
             }
 
 
             function minClick(){
-              setVal(val - 1);
+              if (val <= 0 ){
+                setVal("nilai min")
+              }else{
+                setVal(val - 1);
+              }
             }
 
 
